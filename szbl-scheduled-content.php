@@ -1,12 +1,11 @@
 <?php
 /*
 Plugin Name: Scheduled Content (by Sizeable)
-Plugin URI: http://www.sizeablelabs.com/plugins/scheduled-content/
 Description: Use a shortcode [szbl_scheduled_content] and various attribtues to embed content on a schedule. Supports nested shortcodes.
 Author: Sizeable Labs
 Author URI: http://www.sizeablelabs.com
 License: GPL2
-Version: 1.0
+Version: 1.0.1
 */
 class Szbl_Scheduled_Content
 {
@@ -66,8 +65,7 @@ class Szbl_Scheduled_Content
 
 		if ( $content_filters)
 			$content = apply_filters( 'the_content', $content );
-			
-		if ( $shortcodes )
+		elseif ( $shortcodes )
 			$content = do_shortcode( $content );
 		
 		return $content;

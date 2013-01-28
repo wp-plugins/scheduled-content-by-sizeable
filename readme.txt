@@ -8,11 +8,17 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin 
+Embed scheduled content in your site via shortcode.
 
 == Description ==
 
+Embed scheduled content into your pages, posts and even custom post types supporting shortcodes.
 
+Use `[szbl_scheduled_content]` to wrap and schedule your content. To hide content until a specific date, use the `start` attribute. To have content expire, use the `end` attribute:
+
+`[szbl_scheduled_content start="Jan 1, 2013 12am" end="Apr 14, 2013 12:00pm"]This is my scheduled content[/szbl_scheduled_content]`
+
+You can enter dates/time in any standard format and the plugin should interpret them correctly, using the timezone set under Settings > General.
 
 == Installation ==
 
@@ -38,31 +44,23 @@ Omit the end attribute and your content will never expire, it will just be hidde
 
 We make every effort to use the timezone settings within your WordPress installation (comparisons are made using date_i18n which inherits the WP timezone settings).
 
-= Can I turn off nested shortcode processing? =
+= What are my content filtering/shortcode options? =
 
-Yes. Use the attribute "shortcodes" and set it's value to false:
+You can set the following two attributes to toggle nested shortcode processing and applying filters for `the_content`:
 
-[szbl_scheduled_content start="March 4, 2013" shortcodes="false"]
+* `content_filters` (defaults to `true`, can be set to `true` or `false`)
+* `shortcodes` (defaults to `true`, can be set to `true` or `false`)
 
-= Can I turn off auto-formatting of the content? =
+Content filtering must be turned off for the `shortcodes` attribute to take effect. You'd only want to use these if you want to remove content filtering (like `wpautop` and `wptexturize`) but still process shortcodes:
 
-Yes. Use the attribute "content_filters" and set it's value to false:
-
-[szbl_scheduled_content start="March 4, 2013" content_filters="false"]
-
-By default the plugin will apply the same filters as post/page content on the content of the shortcode.
-
-== Screenshots ==
-
-
+`[szbl_scheduled_content start="Jan 1, 2013 12am" end="Apr 14, 2013 12:00pm" content_filtering="false" shortcodes="true"]This is my scheduled content. [another_shortcode] [/szbl_scheduled_content]`
 
 == Changelog ==
 
+= 1.0.1 =
 
+* Updates to readme.txt
 
-== Upgrade notice ==
+= 1.0 =
 
-
-
-== Arbitrary section 1 ==
-
+* First commit. Basic functionality.
